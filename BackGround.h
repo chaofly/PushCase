@@ -2,8 +2,8 @@
 
 #define ROW 5  //地图行数
 #define COL 5  //地图列数
-#define SCREEN_WIDTH 500
-#define SCREEN_HEIGHT 500
+#define SCREEN_WIDTH 250
+#define SCREEN_HEIGHT 250
 
 #define WALL 0  //墙体
 #define RODA 1  //路
@@ -45,7 +45,7 @@ class BackGround
 {
 public:
 	BackGround();
-	void UpdateMap(int level);
+	bool UpdateMap(int level);
 	PMAPDATA GetMap();
 
 private:

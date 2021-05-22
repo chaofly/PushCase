@@ -5,12 +5,12 @@ BackGround::BackGround()
 	UpdateMap(m_nLevel);
 }
 
-//根据关卡更新地图
-void BackGround::UpdateMap(int level)
+//根据关卡更新地图, 更新地图失败表示通关
+bool BackGround::UpdateMap(int level)
 {
 	if (level > m_nMapCount || level < 1)
 	{
-		level = 1;
+		return false;  
 	}
 	m_nLevel = level;
 	for (int i = 0; i < ROW; i++)
@@ -20,6 +20,7 @@ void BackGround::UpdateMap(int level)
 			m_pMap[i][j] = g_map[(level - 1)*ROW + i][j];
 		}
 	}
+	return true;
 }
 
 //获取地图数据
