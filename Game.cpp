@@ -52,6 +52,10 @@ void Game::ShowGame()
 			case POINT_PERSON:
 				putimage(j*POINT_SIZE, i*POINT_SIZE, &m_pPersonPointImage);
 				break;
+			default: //ROAD
+				setfillcolor(BLACK);
+				solidrectangle(j*POINT_SIZE, i*POINT_SIZE, (j+1)*POINT_SIZE, (i+1)*POINT_SIZE);
+				break;
 			}
 		}
 	}
