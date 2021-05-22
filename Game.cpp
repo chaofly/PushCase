@@ -22,6 +22,7 @@ void Game::StartGame()
 
 void Game::EndGame()
 {
+	getchar();
 	closegraph(); // ¹Ø±Õ»æÍ¼´°¿Ú
 }
 
@@ -77,19 +78,47 @@ void Game::Clear()
 void Game::MoveUp()
 {
 	m_bk.MoveUp();
+	if (m_bk.CheckResult())
+	{
+		if (!m_bk.UpdateMap())
+		{
+			EndGame();
+		}
+	}
 }
 
 void Game::MoveDown()
 {
 	m_bk.MoveDown();
+	if (m_bk.CheckResult())
+	{
+		if (!m_bk.UpdateMap())
+		{
+			EndGame();
+		}
+	}
 }
 
 void Game::MoveLeft()
 {
 	m_bk.MoveLeft();
+	if (m_bk.CheckResult())
+	{
+		if (!m_bk.UpdateMap())
+		{
+			EndGame();
+		}
+	}
 }
 
 void Game::MoveRight()
 {
 	m_bk.MoveRight();
+	if (m_bk.CheckResult())
+	{
+		if (!m_bk.UpdateMap())
+		{
+			EndGame();
+		}
+	}
 }

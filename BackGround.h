@@ -61,19 +61,21 @@ class BackGround
 {
 public:
 	BackGround();
-	bool UpdateMap(int level);
+	bool UpdateMap();
 	PMAPDATA GetMap();
 	void MoveUp();
 	void MoveDown();
 	void MoveLeft();
 	void MoveRight();
 	bool MoveCase(int preX, int preY, DIRECT direct);
+	bool CheckResult();
 private:
 	void Move(int x, int y, DIRECT direct);
 private:
 	int m_nMapCount = sizeof(g_map)/(COL*ROW); //地图数
-	int m_nLevel = 1; //关卡
+	int m_nLevel = 0; //关卡
 	char m_pMap[ROW][COL]; //存放地图
 	CPoint m_pointPerson; //人物所在位置
+	int m_nSucess = 0; //几个箱子已经到了目的点
 };
 

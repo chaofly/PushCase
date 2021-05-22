@@ -2,22 +2,23 @@
 
 BackGround::BackGround()
 {
-	UpdateMap(m_nLevel);
+	UpdateMap();
 }
 
 //根据关卡更新地图, 更新地图失败表示通关
-bool BackGround::UpdateMap(int level)
+bool BackGround::UpdateMap()
 {
-	if (level > m_nMapCount || level < 1)
+	m_nSucess = 0;
+	m_nLevel += 1;
+	if (m_nLevel > m_nMapCount || m_nLevel < 1)
 	{
 		return false;  
 	}
-	m_nLevel = level;
 	for (int i = 0; i < ROW; i++)
 	{
 		for (int j = 0; j < COL; j++)
 		{
-			m_pMap[i][j] = g_map[(level - 1)*ROW + i][j];
+			m_pMap[i][j] = g_map[(m_nLevel - 1)*ROW + i][j];
 			if (m_pMap[i][j] == PERSON)
 			{
 				m_pointPerson = CPoint(j, i);
@@ -85,17 +86,20 @@ bool BackGround::MoveCase(int preX, int preY, DIRECT direct)
 		if (m_pMap[preY][preX]==POINT_CASE)
 		{
 			m_pMap[preY][preX] = TPOINT;
+			m_nSucess -= 1;
 		}
 		else
 		{
 			m_pMap[preY][preX] = ROAD;
 		}
 		m_pMap[newY][newX] = POINT_CASE;
+		m_nSucess += 1;
 		break;
 	case ROAD:
 		if (m_pMap[preY][preX] == POINT_CASE)
 		{
 			m_pMap[preY][preX] = TPOINT;
+			m_nSucess -= 1;
 		}
 		else
 		{
@@ -105,6 +109,16 @@ bool BackGround::MoveCase(int preX, int preY, DIRECT direct)
 		break;
 	}
 	return true;
+}
+
+//检查游戏是否已经通关
+bool BackGround::CheckResult()
+{
+	if (m_nSucess >= m_nLevel)
+	{
+		return true;
+	}
+	return false;
 }
 
 //移动
