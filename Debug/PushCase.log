@@ -1,2 +1,4 @@
-﻿  BackGround.cpp
+﻿  Game.cpp
+c:\users\administrator\desktop\pushcase\pushcase\game.cpp(29): warning C4996: 'wcscpy': This function or variable may be unsafe. Consider using wcscpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\corecrt_wstring.h(123): note: 参见“wcscpy”的声明
   PushCase.vcxproj -> C:\Users\Administrator\Desktop\PushCase\Debug\PushCase.exe

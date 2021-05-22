@@ -22,6 +22,16 @@ void Game::StartGame()
 
 void Game::EndGame()
 {
+	TCHAR s[] = _T("Game Over !!!");
+	LOGFONT f;
+	gettextstyle(&f);						// 获取当前字体设置
+	f.lfHeight = 24;						// 设置字体高度为 48
+	_tcscpy(f.lfFaceName, _T("黑体"));		// 设置字体为“黑体”(高版本 VC 推荐使用 _tcscpy_s 函数)
+	f.lfQuality = ANTIALIASED_QUALITY;		// 设置输出效果为抗锯齿  
+	settextstyle(&f);						// 设置字体样式
+	settextcolor(RED);
+	setbkmode(TRANSPARENT);
+	outtextxy(SCREEN_WIDTH/3, SCREEN_HEIGHT/2, s);
 	getchar();
 	closegraph(); // 关闭绘图窗口
 }
@@ -61,6 +71,15 @@ void Game::ShowGame()
 			}
 		}
 	}
+	if (m_bk.CheckResult())
+	{
+		if (!m_bk.UpdateMap())
+		{
+			EndGame();
+		}
+		ShowGame();
+	}
+
 }
 
 void Game::Clear()
@@ -78,47 +97,19 @@ void Game::Clear()
 void Game::MoveUp()
 {
 	m_bk.MoveUp();
-	if (m_bk.CheckResult())
-	{
-		if (!m_bk.UpdateMap())
-		{
-			EndGame();
-		}
-	}
 }
 
 void Game::MoveDown()
 {
 	m_bk.MoveDown();
-	if (m_bk.CheckResult())
-	{
-		if (!m_bk.UpdateMap())
-		{
-			EndGame();
-		}
-	}
 }
 
 void Game::MoveLeft()
 {
 	m_bk.MoveLeft();
-	if (m_bk.CheckResult())
-	{
-		if (!m_bk.UpdateMap())
-		{
-			EndGame();
-		}
-	}
 }
 
 void Game::MoveRight()
 {
 	m_bk.MoveRight();
-	if (m_bk.CheckResult())
-	{
-		if (!m_bk.UpdateMap())
-		{
-			EndGame();
-		}
-	}
 }
