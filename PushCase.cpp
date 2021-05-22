@@ -9,6 +9,7 @@ int main()
 {
 	Game g;
 	g.StartGame();
+	getchar();
 	return 0;
 }
 

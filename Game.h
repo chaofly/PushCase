@@ -4,11 +4,11 @@
 
 
 //×ÊÔ´Í¼Æ¬
-const char CASE_IMAGE[] = "case.png";
-const char CASE_POINT_IMAGE[] = "case_yellow.png";
-const char PERSON_IMAGE[] = "person.png";
-const char POINT_IMAGE[] = "point.png";
-const char WALL_IMAGE[] = "wall.png";
+const TCHAR CASE_IMAGE[] = _T("case.png");
+const TCHAR CASE_POINT_IMAGE[] = _T("case_yellow.png");
+const TCHAR PERSON_IMAGE[] = _T("person.png");
+const TCHAR POINT_IMAGE[] = _T("point.png");
+const TCHAR WALL_IMAGE[] = _T("wall.png");
 
 
 class Game

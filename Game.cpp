@@ -1,19 +1,21 @@
 #include "Game.h"
 #include "BackGround.h"
 #include <graphics.h>
+#include <stdio.h>
 
 Game::Game()
 {
-	loadimage(&m_pCaseImage, _T(CASE_IMAGE), SCREEN_WIDTH/COL, SCREEN_HEIGHT/ROW, true);
-	loadimage(&m_pCasePointImage, _T(CASE_POINT_IMAGE), SCREEN_WIDTH / COL, SCREEN_HEIGHT / ROW, true);
-	loadimage(&m_pPersonImage, _T(PERSON_IMAGE), SCREEN_WIDTH / COL, SCREEN_HEIGHT / ROW, true);
-	loadimage(&m_pPointImage, _T(POINT_IMAGE), SCREEN_WIDTH / COL, SCREEN_HEIGHT / ROW, true);
-	loadimage(&m_pWallImage, _T(WALL_IMAGE), SCREEN_WIDTH / COL, SCREEN_HEIGHT / ROW, true);
+	loadimage(&m_pCaseImage, CASE_IMAGE, SCREEN_WIDTH/COL, SCREEN_HEIGHT/ROW, true);
+	loadimage(&m_pCasePointImage, CASE_POINT_IMAGE, SCREEN_WIDTH / COL, SCREEN_HEIGHT / ROW, true);
+	loadimage(&m_pPersonImage, PERSON_IMAGE, SCREEN_WIDTH / COL, SCREEN_HEIGHT / ROW, true);
+	loadimage(&m_pPointImage, POINT_IMAGE, SCREEN_WIDTH / COL, SCREEN_HEIGHT / ROW, true);
+	loadimage(&m_pWallImage, WALL_IMAGE, SCREEN_WIDTH / COL, SCREEN_HEIGHT / ROW, true);
 }
 
 void Game::StartGame()
 {
 	initgraph(SCREEN_WIDTH, SCREEN_HEIGHT);	// ´´½¨»æÍ¼´°¿Ú
+	putimage(0, 0, &m_pPersonImage);
 	ShowGame();
 }
 
@@ -28,8 +30,27 @@ void Game::ShowGame()
 	for (int i = 0; i < ROW; i++)
 	{
 		for (int j = 0; j < COL; j++)
-		{
-
+		{	
+			switch (pBKData[i][j])
+			{
+			default:
+				break;
+			case PERSON:
+				putimage(j*POINT_SIZE, i*POINT_SIZE, &m_pPersonImage);
+				break;
+			case CASE:
+				putimage(j*POINT_SIZE, i*POINT_SIZE, &m_pCaseImage);
+				break;
+			case TPOINT:
+				putimage(j*POINT_SIZE, i*POINT_SIZE, &m_pPointImage);
+				break;
+			case POINT_CASE:
+				putimage(j*POINT_SIZE, i*POINT_SIZE, &m_pCasePointImage);
+				break;
+			case WALL:
+				putimage(j*POINT_SIZE, i*POINT_SIZE, &m_pWallImage);
+				break;
+			}
 		}
 	}
 }
