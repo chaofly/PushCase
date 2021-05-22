@@ -123,7 +123,7 @@ void BackGround::Move(int x, int y, DIRECT direct)
 			m_pMap[m_pointPerson.m_nY][m_pointPerson.m_nX] = ROAD;
 		}
 		m_pointPerson.m_nX = x;
-		m_pointPerson.m_nX = y;
+		m_pointPerson.m_nY = y;
 		m_pMap[m_pointPerson.m_nY][m_pointPerson.m_nX] = PERSON;
 		break;
 	case WALL:
@@ -140,7 +140,7 @@ void BackGround::Move(int x, int y, DIRECT direct)
 				m_pMap[m_pointPerson.m_nY][m_pointPerson.m_nX] = ROAD;
 			}
 			m_pointPerson.m_nX = x;
-			m_pointPerson.m_nX = y;
+			m_pointPerson.m_nY = y;
 			m_pMap[m_pointPerson.m_nY][m_pointPerson.m_nX] = PERSON;
 		}
 		break;
@@ -156,7 +156,7 @@ void BackGround::Move(int x, int y, DIRECT direct)
 				m_pMap[m_pointPerson.m_nY][m_pointPerson.m_nX] = ROAD;
 			}
 			m_pointPerson.m_nX = x;
-			m_pointPerson.m_nX = y;
+			m_pointPerson.m_nY = y;
 			m_pMap[m_pointPerson.m_nY][m_pointPerson.m_nX] = POINT_PERSON;
 		}
 		break;
@@ -170,7 +170,7 @@ void BackGround::Move(int x, int y, DIRECT direct)
 			m_pMap[m_pointPerson.m_nY][m_pointPerson.m_nX] = ROAD;
 		}
 		m_pointPerson.m_nX = x;
-		m_pointPerson.m_nX = y;
+		m_pointPerson.m_nY = y;
 		m_pMap[m_pointPerson.m_nY][m_pointPerson.m_nX] = POINT_PERSON;
 		break;
 	}

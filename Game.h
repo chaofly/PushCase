@@ -19,6 +19,7 @@ public:
 	void StartGame(); //开始游戏
 	void EndGame(); //结束游戏
 	void ShowGame(); //显示游戏
+	void Clear(); //清空屏幕
 
 	void MoveUp();
 	void MoveDown();

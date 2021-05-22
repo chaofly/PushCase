@@ -27,6 +27,7 @@ void Game::EndGame()
 
 void Game::ShowGame()
 {
+	//Clear();
 	auto pBKData = m_bk.GetMap();
 	for (int i = 0; i < ROW; i++)
 	{
@@ -57,6 +58,18 @@ void Game::ShowGame()
 				solidrectangle(j*POINT_SIZE, i*POINT_SIZE, (j+1)*POINT_SIZE, (i+1)*POINT_SIZE);
 				break;
 			}
+		}
+	}
+}
+
+void Game::Clear()
+{
+	for (int i = 0; i < ROW; i++)
+	{
+		for (int j = 0; j < COL; j++)
+		{
+			setfillcolor(BLACK);
+			solidrectangle(j*POINT_SIZE, i*POINT_SIZE, (j + 1)*POINT_SIZE, (i + 1)*POINT_SIZE);
 		}
 	}
 }
