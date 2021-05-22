@@ -2,6 +2,7 @@
 //
 
 #include <iostream>
+#include <conio.h>
 #include "Game.h"
 using namespace std;
 
@@ -9,7 +10,25 @@ int main()
 {
 	Game g;
 	g.StartGame();
-	getchar();
+	while (true)
+	{
+		char ch = _getch();
+		switch(ch)
+		{
+			case 'W':
+			case 'w':
+				break;
+			case 'S':
+			case 's':
+				break;
+			case 'A':
+			case 'a':
+				break;
+			case 'D':
+			case 'd':
+				break;
+		}
+	}
 	return 0;
 }
 

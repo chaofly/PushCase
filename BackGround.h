@@ -7,11 +7,18 @@
 #define POINT_SIZE (SCREEN_WIDTH/COL) //每个点在地图中的大小
 
 #define WALL 0  //墙体
-#define RODA 1  //路
+#define ROAD 1  //路
 #define CASE 2  //箱子
 #define TPOINT 3 //目标点 
 #define PERSON 4 //人物
 #define POINT_CASE 5 //箱子和目标点重合
+#define PPOINT_PERSON 6 //人物和目标点重合
+
+#define DIRECT char //方向
+#define UP 0
+#define DOWN 1
+#define LEFT 2
+#define RIGHT 3
 
 typedef char(*PMAPDATA)[COL];
 
@@ -20,25 +27,33 @@ typedef char(*PMAPDATA)[COL];
 static char g_map[][COL] = {
 #pragma region map 1
 	WALL, WALL, WALL, WALL, WALL,
-	WALL, TPOINT, RODA, RODA, WALL,
-	WALL, RODA, CASE, RODA, WALL,
-	WALL, WALL, PERSON, RODA, WALL,
+	WALL, TPOINT, ROAD, ROAD, WALL,
+	WALL, ROAD, CASE, ROAD, WALL,
+	WALL, WALL, PERSON, ROAD, WALL,
 	WALL, WALL, WALL, WALL, WALL,
 #pragma endregion map 1
 #pragma region map 2
 	WALL, WALL, WALL, WALL, WALL,
-	WALL, RODA, TPOINT, RODA, WALL,
-	WALL, CASE, CASE, RODA, WALL,
-	WALL, TPOINT, PERSON, RODA, WALL,
+	WALL, ROAD, TPOINT, ROAD, WALL,
+	WALL, CASE, CASE, ROAD, WALL,
+	WALL, TPOINT, PERSON, ROAD, WALL,
 	WALL, WALL, WALL, WALL, WALL,
 #pragma endregion map 2
 #pragma region map 3
 	WALL, WALL, WALL, WALL, WALL,
-	WALL, RODA, RODA, TPOINT, WALL,
+	WALL, ROAD, ROAD, TPOINT, WALL,
 	WALL, TPOINT, CASE, CASE, WALL,
 	WALL, TPOINT, CASE, PERSON, WALL,
 	WALL, WALL, WALL, WALL, WALL,
 #pragma endregion map 3
+};
+
+class CPoint
+{
+public:
+	int m_nX; //x坐标
+	int m_nY; //y坐标
+	CPoint(int x=0, int y=0):m_nX(x), m_nY(y){}
 };
 
 
@@ -48,10 +63,17 @@ public:
 	BackGround();
 	bool UpdateMap(int level);
 	PMAPDATA GetMap();
-
+	void MoveUp();
+	void MoveDown();
+	void MoveLeft();
+	void MoveRight();
+	void MoveCase(int preX, int preY, DIRECT direct);
+private:
+	void Move(int x, int y, DIRECT direct);
 private:
 	int m_nMapCount = sizeof(g_map)/(COL*ROW); //地图数
 	int m_nLevel = 1; //关卡
 	char m_pMap[ROW][COL]; //存放地图
+	CPoint m_pointPerson; //人物所在位置
 };
 
