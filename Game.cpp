@@ -10,6 +10,7 @@ Game::Game()
 	loadimage(&m_pPersonImage, PERSON_IMAGE, SCREEN_WIDTH / COL, SCREEN_HEIGHT / ROW, true);
 	loadimage(&m_pPointImage, POINT_IMAGE, SCREEN_WIDTH / COL, SCREEN_HEIGHT / ROW, true);
 	loadimage(&m_pWallImage, WALL_IMAGE, SCREEN_WIDTH / COL, SCREEN_HEIGHT / ROW, true);
+	loadimage(&m_pPersonPointImage, POINT_PERSON_IMAGE, SCREEN_WIDTH / COL, SCREEN_HEIGHT / ROW, true);
 }
 
 void Game::StartGame()
@@ -33,8 +34,6 @@ void Game::ShowGame()
 		{	
 			switch (pBKData[i][j])
 			{
-			default:
-				break;
 			case PERSON:
 				putimage(j*POINT_SIZE, i*POINT_SIZE, &m_pPersonImage);
 				break;
@@ -50,7 +49,30 @@ void Game::ShowGame()
 			case WALL:
 				putimage(j*POINT_SIZE, i*POINT_SIZE, &m_pWallImage);
 				break;
+			case POINT_PERSON:
+				putimage(j*POINT_SIZE, i*POINT_SIZE, &m_pPersonPointImage);
+				break;
 			}
 		}
 	}
+}
+
+void Game::MoveUp()
+{
+	m_bk.MoveUp();
+}
+
+void Game::MoveDown()
+{
+	m_bk.MoveDown();
+}
+
+void Game::MoveLeft()
+{
+	m_bk.MoveLeft();
+}
+
+void Game::MoveRight()
+{
+	m_bk.MoveRight();
 }

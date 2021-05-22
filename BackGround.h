@@ -12,7 +12,7 @@
 #define TPOINT 3 //目标点 
 #define PERSON 4 //人物
 #define POINT_CASE 5 //箱子和目标点重合
-#define PPOINT_PERSON 6 //人物和目标点重合
+#define POINT_PERSON 6 //人物和目标点重合
 
 #define DIRECT char //方向
 #define UP 0

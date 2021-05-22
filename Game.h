@@ -9,6 +9,7 @@ const TCHAR CASE_POINT_IMAGE[] = _T("case_yellow.png");
 const TCHAR PERSON_IMAGE[] = _T("person.png");
 const TCHAR POINT_IMAGE[] = _T("point.png");
 const TCHAR WALL_IMAGE[] = _T("wall.png");
+const TCHAR POINT_PERSON_IMAGE[] = _T("point_person.png");
 
 
 class Game
@@ -18,6 +19,11 @@ public:
 	void StartGame(); //开始游戏
 	void EndGame(); //结束游戏
 	void ShowGame(); //显示游戏
+
+	void MoveUp();
+	void MoveDown();
+	void MoveLeft();
+	void MoveRight();
 private:
 	BackGround m_bk;
 	IMAGE m_pCaseImage; //箱子图片
@@ -25,5 +31,6 @@ private:
 	IMAGE m_pPersonImage; //人物图片
 	IMAGE m_pPointImage; //目的点图片
 	IMAGE m_pWallImage; //墙体图片
+	IMAGE m_pPersonPointImage; // 人物到达目的点图片
 };
 

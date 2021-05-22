@@ -80,7 +80,7 @@ bool BackGround::MoveCase(int preX, int preY, DIRECT direct)
 	switch (m_pMap[newY][newX])
 	{
 	default: //WALL, CASE, POINT_CASE
-		break;
+		return false;
 	case TPOINT:
 		if (m_pMap[preY][preX]==POINT_CASE)
 		{
@@ -104,6 +104,7 @@ bool BackGround::MoveCase(int preX, int preY, DIRECT direct)
 		m_pMap[newY][newX] = CASE;
 		break;
 	}
+	return true;
 }
 
 //移动
@@ -113,7 +114,7 @@ void BackGround::Move(int x, int y, DIRECT direct)
 	{
 	 case ROAD: //ROAD
 		//人物和目标点重合在一起
-		if (m_pMap[m_pointPerson.m_nY][m_pointPerson.m_nX] == PPOINT_PERSON)
+		if (m_pMap[m_pointPerson.m_nY][m_pointPerson.m_nX] == POINT_PERSON)
 		{
 			m_pMap[m_pointPerson.m_nY][m_pointPerson.m_nX] = TPOINT;
 		}
@@ -128,6 +129,49 @@ void BackGround::Move(int x, int y, DIRECT direct)
 	case WALL:
 		break;
 	case CASE:
+		if (MoveCase(x, y, direct))
+		{
+			if (m_pMap[m_pointPerson.m_nY][m_pointPerson.m_nX] == POINT_PERSON)
+			{
+				m_pMap[m_pointPerson.m_nY][m_pointPerson.m_nX] = TPOINT;
+			}
+			else
+			{
+				m_pMap[m_pointPerson.m_nY][m_pointPerson.m_nX] = ROAD;
+			}
+			m_pointPerson.m_nX = x;
+			m_pointPerson.m_nX = y;
+			m_pMap[m_pointPerson.m_nY][m_pointPerson.m_nX] = PERSON;
+		}
+		break;
+	case POINT_CASE:
+		if (MoveCase(x, y, direct))
+		{
+			if (m_pMap[m_pointPerson.m_nY][m_pointPerson.m_nX] == POINT_PERSON)
+			{
+				m_pMap[m_pointPerson.m_nY][m_pointPerson.m_nX] = TPOINT;
+			}
+			else
+			{
+				m_pMap[m_pointPerson.m_nY][m_pointPerson.m_nX] = ROAD;
+			}
+			m_pointPerson.m_nX = x;
+			m_pointPerson.m_nX = y;
+			m_pMap[m_pointPerson.m_nY][m_pointPerson.m_nX] = POINT_PERSON;
+		}
+		break;
+	case TPOINT:
+		if (m_pMap[m_pointPerson.m_nY][m_pointPerson.m_nX] == POINT_PERSON)
+		{
+			m_pMap[m_pointPerson.m_nY][m_pointPerson.m_nX] = TPOINT;
+		}
+		else
+		{
+			m_pMap[m_pointPerson.m_nY][m_pointPerson.m_nX] = ROAD;
+		}
+		m_pointPerson.m_nX = x;
+		m_pointPerson.m_nX = y;
+		m_pMap[m_pointPerson.m_nY][m_pointPerson.m_nX] = POINT_PERSON;
 		break;
 	}
 }

@@ -17,15 +17,23 @@ int main()
 		{
 			case 'W':
 			case 'w':
+				g.MoveUp();
+				g.ShowGame();
 				break;
 			case 'S':
 			case 's':
+				g.MoveDown();
+				g.ShowGame();
 				break;
 			case 'A':
 			case 'a':
+				g.MoveLeft();
+				g.ShowGame();
 				break;
 			case 'D':
 			case 'd':
+				g.MoveRight();
+				g.ShowGame();
 				break;
 		}
 	}
