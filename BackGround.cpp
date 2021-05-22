@@ -58,7 +58,7 @@ void BackGround::MoveRight()
 }
 
 //移动箱子
-void BackGround::MoveCase(int preX, int preY, DIRECT direct)
+bool BackGround::MoveCase(int preX, int preY, DIRECT direct)
 {
 	int newX = preX;
 	int newY = preY;
@@ -111,7 +111,7 @@ void BackGround::Move(int x, int y, DIRECT direct)
 {
 	switch (m_pMap[y][x])
 	{
-	default: //ROAD
+	 case ROAD: //ROAD
 		//人物和目标点重合在一起
 		if (m_pMap[m_pointPerson.m_nY][m_pointPerson.m_nX] == PPOINT_PERSON)
 		{

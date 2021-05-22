@@ -67,7 +67,7 @@ public:
 	void MoveDown();
 	void MoveLeft();
 	void MoveRight();
-	void MoveCase(int preX, int preY, DIRECT direct);
+	bool MoveCase(int preX, int preY, DIRECT direct);
 private:
 	void Move(int x, int y, DIRECT direct);
 private:
